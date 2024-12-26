@@ -3,7 +3,7 @@ FROM --platform=$BUILDPLATFORM golang:1.23 AS builder
 WORKDIR /app
 RUN git clone https://github.com/TheTinkerDad/sensible.git .
 RUN go mod download
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /sensible
+RUN CGO_ENABLED=0 GOOS=linux go build -o /sensible
 
 FROM ghcr.io/mpepping/podshell:4 AS runtime
 

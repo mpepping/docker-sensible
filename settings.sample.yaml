@@ -54,3 +54,15 @@ plugins:
       script: platform.sh
       unitofmeasurement: ""
       icon: mdi:wrench-check
+    - name: CPU
+      kind: script
+      sensorid: cpu
+      script: cpu.sh
+      unitofmeasurement: ""
+      icon: mdi:cpu-64-bit
+    - name: Memory
+      kind: script
+      sensorid: mem
+      script: mem.sh
+      unitofmeasurement: ""
+      icon: mdi:memory
