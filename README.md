@@ -1,6 +1,6 @@
-# sensible-docker for Home Assistant
+# docker-sensible for Home Assistant
 
-Run this sensible-docker image on Linux hosts for which you want to see some basic OS information in Home Assistant in an easy way.
+Run this docker-sensible image on Linux hosts for which you want to see some basic OS information in Home Assistant in an easy way.
 
 Requires Home Assistant with an MQTT broker. Preferably a MQTT broker that supports auto-discovery, like Mosquitto.
 
