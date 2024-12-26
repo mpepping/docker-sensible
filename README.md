@@ -75,7 +75,7 @@ Start the container with the `settings.yaml` mounted to `/etc/sensible/settings.
 services:
   sensible:
     restart: always
-    image: ghcr.io/mpepping/sensible:latest
+    image: ghcr.io/mpepping/docker-sensible:latest
     network_mode: host
     volumes:
       - ./settings.yaml:/etc/sensible/settings.yaml
