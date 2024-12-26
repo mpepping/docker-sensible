@@ -1,0 +1,10 @@
+services:
+  sensible:
+    restart: always
+    image: ghcr.io/mpepping/sensible:latest
+    network_mode: host
+    volumes:
+      - ./settings.yaml:/etc/sensible/settings.yaml
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+
