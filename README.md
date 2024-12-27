@@ -1,14 +1,12 @@
 # docker-sensible for Home Assistant
 
-Run this docker-sensible image on Linux hosts for which you want to see some basic OS information in Home Assistant in an easy way.
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mpepping/docker-sensible)
 
-Requires Home Assistant with an MQTT broker. Preferably a MQTT broker that supports auto-discovery, like Mosquitto.
-
-This container images uses <https://github.com/TheTinkerDad/sensible>.
+Run this [docker-sensible container image](https://github.com/mpepping/docker-sensible) on Linux hosts for which you want to see some basic OS information and metrics in [Home Assistant](https://www.home-assistant.io) in an easy way. Requires Home Assistant with an MQTT broker integration or add-on. Preferably a MQTT broker that supports auto-discovery, like the [Mosquitto add-on](https://www.home-assistant.io/integrations/mqtt/#setting-up-a-broker).
 
 ## Installation
 
-Copy the `settings.example.yaml` to `settings.yaml` and adjust the settings to your needs. At minimunt set the `mqtt.hostname` to the IP address of your MQTT broker and the `discovery.devicename` to a unique name for this device.
+Running the container image requires setting up the `settings.xml` configuration file. Start by copying the `settings.example.yaml` to `settings.yaml` and adjust the settings to your needs. At minimum set the `mqtt.hostname` to the IP address of your MQTT broker, a unique `mqtt.clientid` and the `discovery.devicename` to a unique name for this device.
 
 ```yaml
 [..]
@@ -34,8 +32,27 @@ services:
     network_mode: host
     volumes:
       - ./settings.yaml:/etc/sensible/settings.yaml
+      - /etc:/host/etc:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
 ```
 
-See the [docker-compose.yaml](docker-compose.yaml) for a full example.
+Run `docker-compose up` to start the container. See the [docker-compose.yaml](docker-compose.yaml) for a full example.
+
+If you're not using `docker-compose` and want to use a `docker` compatible runtime directly, run the following command:
+
+```bash
+docker run -d --name sensible \
+  --restart always \
+  --network host \
+  -v $(pwd)/settings.yaml:/etc/sensible/settings.yaml \
+  -v /etc:/host/etc:ro \
+  -v /proc:/host/proc:ro \
+  -v /sys:/host/sys:ro \
+  ghcr.io/mpepping/docker-sensible:latest
+```
+
+
+## References
+
+This container images uses <https://github.com/TheTinkerDad/sensible>.
