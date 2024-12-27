@@ -5,6 +5,6 @@ services:
     network_mode: host
     volumes:
       - ./settings.yaml:/etc/sensible/settings.yaml
+      - /etc:/host/etc:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
-

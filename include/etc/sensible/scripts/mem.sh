@@ -11,4 +11,4 @@ MEM_USED=$((MEM_TOTAL - MEM_AVAILABLE))
 # Calculate used memory percentage
 MEM_USED_PERCENT=$(echo "$MEM_USED $MEM_TOTAL" | awk '{printf "%.2f", ($1 / $2) * 100}')
 
-echo "$MEM_USED_PERCENT%"
+echo "$MEM_USED_PERCENT"
