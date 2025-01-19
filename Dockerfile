@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.23 AS builder
+FROM golang:1.23 AS builder
 
 WORKDIR /app
 RUN git clone https://github.com/TheTinkerDad/sensible.git .
