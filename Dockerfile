@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     CGO_ENABLED=0 GOOS="${TARGETOS:-linux}" GOARCH="${TARGETARCH}" \
     go build -trimpath -ldflags="-s -w" -o /out/sensible .
 
-FROM ghcr.io/mpepping/podshell:4 AS runtime
+FROM ghcr.io/mpepping/podshell:5 AS runtime
 
 LABEL org.opencontainers.image.source="https://github.com/mpepping/docker-sensible" \
       org.opencontainers.image.description="Container image for Sensible MQTT sensors for Home Assistant"
